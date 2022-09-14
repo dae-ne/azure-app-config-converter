@@ -1,0 +1,24 @@
+{
+  "name": "azure-app-config-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dae-ne/azure-app-config-converter.git"
+  },
+  "author": "dae-ne",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dae-ne/azure-app-config-converter/issues"
+  },
+  "homepage": "https://github.com/dae-ne/azure-app-config-converter#readme",
+  "dependencies": {
+    "clipboardy": "^3.0.0",
+    "commander": "^9.4.0"
+  }
+}
