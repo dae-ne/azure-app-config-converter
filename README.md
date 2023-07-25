@@ -1,6 +1,6 @@
 # Azure App Configuration Converter
 
-Copy a configuration from:
+Convert Azure app config from...
 
 ```json
 [
@@ -17,7 +17,7 @@ Copy a configuration from:
 ]
 ```
 
-...to:
+...to
 
 ```json
 {
