@@ -4,8 +4,8 @@ import { handle } from './handler.js';
 
 program
   .option('-i, --indentation <number>', 'number of spaces', 2)
-  .option('-o, --output', 'write output to console', true)
-  .option('-c, --clipboard', 'write output to clipboard', false)
+  .option('-o, --output', 'write output to console', false)
+  .option('-c, --clipboard', 'write output to clipboard', true)
 
 program.parse(process.argv);
 
