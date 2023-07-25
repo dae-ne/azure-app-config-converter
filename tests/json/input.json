@@ -1,0 +1,17 @@
+[
+  {
+    "name": "ConfigKey1",
+    "value": "ConfigKey1Value",
+    "slotSetting": false
+  },
+  {
+    "name": "ConfigKey2",
+    "value": "ConfigKey2Value",
+    "slotSetting": false
+  },
+  {
+    "name": "ConfigKey3",
+    "value": "ConfigKey3Value",
+    "slotSetting": false
+  }
+]

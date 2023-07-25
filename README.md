@@ -1,10 +1,6 @@
-# azure-app-config-converter
+# Azure App Configuration Converter
 
-Copy a configuration from an azure app and convert it to a more usable form.
-
-## Example
-
-Azure config:
+Copy a configuration from:
 
 ```json
 [
@@ -21,7 +17,7 @@ Azure config:
 ]
 ```
 
-Result:
+...to:
 
 ```json
 {
@@ -41,16 +37,18 @@ npm install
 ## Run
 
 * Copy your configuration to a clipboard (Configuration > Advanced edit).
-* `node index.js`
+* `npm start [-- <args>]` eg.: `npm start -- -o -i 4`
 * The converted configuration is now saved in the clipboard.
 
 ## Usage
 
 ```
-Usage: index [options]
+Usage: app [options]
 
 Options:
   -i, --indentation <number>  number of spaces (default: 2)
+  -o, --output                write output to console (default: true)
+  -c, --clipboard             write output to clipboard (default: false)
   -h, --help                  display help for command
 ```
 
