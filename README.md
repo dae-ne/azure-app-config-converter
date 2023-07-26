@@ -26,7 +26,7 @@ Convert Azure app config from...
 }
 ```
 
-...or
+...or (from template)
 
 ```json
 {
@@ -49,7 +49,7 @@ npm install
 ## Run
 
 * Copy your configuration to a clipboard (Configuration > Advanced edit).
-* `npm start [-- <args>]` eg.: `npm start -- -t functionapp`
+* `npm start [-- <args>]` eg.: `npm start -- -t local.settings.json -f`
 * The converted configuration is now saved in the clipboard.
 
 ## Usage
@@ -61,9 +61,9 @@ Options:
   -i, --indentation <number>  number of spaces (default: 2)
   -o, --output                write output to console (default: true)
   -c, --clipboard             write output to clipboard (default: false)
-  -f, --file                  write output to file (default: false)
-  -n, --name <file-name>      output file name
-  -t, --type <type>           type of the configuration
+  -f, --file                  write output to file
+  -t, --template <name>       template file name
+  -n, --name <name>           output file name
   -h, --help                  display help for command
 ```
 
