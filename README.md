@@ -50,7 +50,6 @@ npm install
 
 * Copy your configuration to a clipboard (Configuration > Advanced edit).
 * `npm start [-- <args>]` eg.: `npm start -- -t local.settings.json -f`
-* The converted configuration is now saved in the clipboard.
 
 ## Usage
 
