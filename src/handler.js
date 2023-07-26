@@ -1,13 +1,13 @@
-import { createFunctionAppSettings } from './templates.js';
-
-export const handle = (data, options) => {
-  const { indentation, type } = options;
+export const handle = (data, options, templateFile = null) => {
+  const { indentation } = options;
 
   const json = JSON.parse(data);
   let result = json.reduce((p, c) => ({ ...p, [c.name]: c.value }), {});
 
-  if (type === 'functionapp') {
-    result = createFunctionAppSettings(result);
+  if (templateFile) {
+    let resultStr = JSON.stringify(result);
+    resultStr = templateFile.replace('"<config>"', resultStr);
+    result = JSON.parse(resultStr);
   }
 
   return JSON

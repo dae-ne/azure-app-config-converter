@@ -3,13 +3,17 @@ import clipboard from 'clipboardy';
 import fs from 'fs';
 import { handle } from './handler.js';
 
+const DEFAULT_FILE_NAME = 'appsettings.json';
+const OUTPUT_DIRECTORY = './output';
+const TEMPLATE_DIRECTORY = './templates';
+
 program
   .option('-i, --indentation <number>', 'number of spaces', 2)
   .option('-o, --output', 'write output to console', true)
   .option('-c, --clipboard', 'write output to clipboard', false)
-  .option('-f, --file', 'write output to file', false)
-  .option('-n, --name <file-name>', 'output file name')
-  .option('-t, --type <type>', 'type of the configuration');
+  .option('-f, --file', 'write output to file')
+  .option('-t, --template <name>', 'template file name')
+  .option('-n, --name <name>', 'output file name');
 
 program.parse(process.argv);
 
@@ -19,11 +23,24 @@ const {
   output: writeToConsole,
   clipboard: writeToClipboard,
   file: writeToFile,
-  type: configurationType
+  template: templateName,
+  name: fileName
 } = options;
 
+let templateFile = null;
+
+if (templateName) {
+  try {
+    templateFile = fs.readFileSync(`${TEMPLATE_DIRECTORY}/${templateName}`)
+      .toString()
+      .trim();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const data = clipboard.readSync();
-const result = handle(data, options);
+const result = handle(data, options, templateFile);
 
 if (writeToConsole) {
   console.log(result);
@@ -34,17 +51,15 @@ if (writeToClipboard) {
   console.log('result saved to clipboard');
 }
 
-if (writeToFile) {
-  let fileName = options.name;
+if (writeToFile || fileName) {
+  let outputFileName = fileName ?? templateName;
 
-  if (!fileName) {
-    fileName = configurationType === 'functionapp'
-      ? 'local.settings.json'
-      : 'appsettings.json';
+  if (!outputFileName) {
+    outputFileName = DEFAULT_FILE_NAME;
   }
 
-  const directory = './output';
-  const filePath = `${directory}/${fileName}`;
+  const directory = OUTPUT_DIRECTORY;
+  const filePath = `${directory}/${outputFileName}`;
 
   try {
     if (!fs.existsSync(directory)){
@@ -52,7 +67,7 @@ if (writeToFile) {
     }
 
     fs.writeFileSync(filePath, result);
-    console.log(`result saved to ${fileName}`);
+    console.log(`result saved to ${outputFileName}`);
   } catch (error) {
     console.error(error);
   }
