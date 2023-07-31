@@ -1,4 +1,4 @@
-export const handle = (data, options, templateFile = null) => {
+export const convert = (data, options, templateFile = null) => {
   const { indentation } = options;
 
   const json = JSON.parse(data);

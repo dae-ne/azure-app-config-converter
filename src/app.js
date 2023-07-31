@@ -1,7 +1,7 @@
 import { program } from 'commander';
 import clipboard from 'clipboardy';
 import fs from 'fs';
-import { handle } from './handler.js';
+import { convert } from './converter.js';
 
 const DEFAULT_FILE_NAME = 'appsettings.json';
 const OUTPUT_DIRECTORY = './output';
@@ -40,7 +40,7 @@ if (templateName) {
 }
 
 const data = clipboard.readSync();
-const result = handle(data, options, templateFile);
+const result = convert(data, options, templateFile);
 
 if (writeToConsole) {
   console.log(result);
